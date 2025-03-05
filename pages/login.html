@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <!-- Toggle dark and light -->
+      <button id="Toggle">
+        <img src="../Assets/dark.svg" />
+        <img src="../Assets/light.svg" />
+      </button>
+
+      <!--! Menu in mobile mode -->
+      <button class="hamburger" id="hamburger">☰</button>
+
+      <!--! Navbar Links -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact us</a></li>
+
+        <!--? Login & Register Buttons for Mobile -->
+        <li class="mobile">
+          <a href="login.html"><button class="link">Login</button></a>
+          <a href="register.html"><button class="link">Register</button></a>
+        </li>
+      </ul>
+
+      <!--! Right-Side Buttons (Desktop Only) -->
+      <div class="right">
+        <a href="login.html"><button class="link">Login</button></a>
+        <a href="register.html"><button class="link">Register</button></a>
+      </div>
+    </nav>
+
+    <div class="form-container">
+      <h2>Login</h2>
+      <form>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="register.html">Register</a></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleButton = document.getElementById("Toggle");
+            const images = toggleButton.getElementsByTagName("img");
+            const body = document.body;
+            const hamburger = document.getElementById("hamburger");
+            const navLinks = document.getElementById("nav-links");
+          
+            images[0].style.display = "block";
+            images[1].style.display = "none";
+          
+            toggleButton.addEventListener("click", () => {
+              body.classList.toggle("dark-mode");
+          
+              if (body.classList.contains("dark-mode")) {
+                images[0].style.display = "none";
+                images[1].style.display = "block";
+              } else {
+                images[0].style.display = "block";
+                images[1].style.display = "none";
+              }
+            });
+          
+            // Toggle the navbar on mobile
+            hamburger.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+      
+                // Change the hamburger icon to "X" when menu is open
+                if (navLinks.classList.contains("active")) {
+                  hamburger.textContent = "X";
+                } else {
+                  hamburger.textContent = "☰";
+                }
+              });
+          });
+    </script>
+  </body>
+</html>
